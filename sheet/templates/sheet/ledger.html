@@ -1,0 +1,87 @@
+{% extends 'sheet/base.html' %}
+{% block content %}
+<style>
+  .header{
+    padding-top: 25px;
+  }
+  body{
+    background-color: rgba(143, 136, 136,0.1);
+    font-family: 'raleway',sans-serif;
+  }
+</style>
+<div class="header">
+  <div class="container-fluid header-container">
+    <div class="row nav-bar">
+      <div class="col-md-11 text-center">
+        <h1>Ledger</h1>
+      </div>
+      <div class="col-md-1 col-md-offset-11">
+        <a href='/logout'><button type="button" class="btn btn-outline-warning">Logout</button></a>
+        
+      </div>
+    </div>
+  </div>
+  <!--<h1 class="d-flex justify-content-center">Ledger</h1>-->
+</div>
+    <br><br>
+    <form class="form-group" method="POST">
+     {% csrf_token %}
+    <div class ="row justify-content-md-center">
+    <div class="input-group mb-3 col col-lg-3">
+  <select class="custom-select" id="inputGroupSelect01" name="lender">
+    <option selected disabled>Choose lender</option>
+    {% for user in users %}
+    <option value="{{user}}">{{user}}</option>
+    {%endfor%}
+  </select>
+  <div class="input-group-append">
+    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+  </div>
+</div>
+<div class="input-group mb-3 col col-lg-3">
+  <select class="custom-select" id="inputGroupSelect02" name="borrower">
+    <option selected disabled>Choose borrower</option>
+    {% for user in users %}
+    <option value="{{user}}">{{user}}</option>
+    {%endfor%}
+  </select>
+  <div class="input-group-append">
+    <label class="input-group-text" for="inputGroupSelect02">Options</label>
+  </div>
+</div>
+ <div class="input-group mb-3 col col-lg-3">
+    <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Enter the amount" name="amount">
+  </div>
+  </div>
+  <br>
+  <div class="d-flex justify-content-center">
+ <button type="submit" class="btn btn-primary mb-2">Confirm Submit</button>
+ </div>
+</form>
+<br> <br>
+<center>{{ money }}</center>
+<br><br><br>
+<div class="row justify-content-center"> 
+<table class="table col-lg-8 table-hover ">
+    <thread>
+        <th scope="col">#</th> 
+      <th scope="col">Lender</th>
+      <th scope="col">Borrower</th>
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for l in ledgers %} 
+        <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{l.lender|capfirst}}</td>
+      <td>{{l.borrower|capfirst}}</td>
+      <td>{{l.amount}}</td>
+      <td id="dustbin"><i class="fa fa-trash-o" style="font-size: 24px; color: rgba(134, 134, 134,0.4);"></i></td>
+    </tr>
+    {% endfor %}
+
+{% endblock %}
+
+
+

@@ -1,0 +1,62 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style type="text/css">
+	
+	body{
+		background: rgba(143, 141, 141,0.3);
+		font-family: 'raleway',sans-serif;
+		color:black;
+	}
+
+	.login{
+		padding-top: 45px;
+		padding-bottom: 45px;
+		border:none;
+		border-bottom:2px solid black
+    
+	}
+	input{
+		background: transparent!important;
+		border:none!important;
+		border-bottom: 2px solid #15171c!important;
+		outline: none!important;
+		box-shadow: none!important;
+		border-radius: 0px!important;
+	}
+	
+  /*#hello{
+    outline: none;
+        background: transparent;
+        border: none;
+        height: 48px;
+        font-size: 18px;
+        padding-left: 12px;
+        border-bottom: 2px solid #15171c;
+  }*/
+
+
+</style>
+
+<div class="login">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h2>Sign up</h2>
+				<form method="post" enctype="mutipart/form-data">
+				{% csrf_token %}
+
+				{{ form|crispy }}
+
+				<br><br>
+
+				<button type="submit">Sign up</button>
+				</form>
+				<br><br>
+				already have an account? click <a href="{% url 'login' %}">here</a> to login
+  			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
