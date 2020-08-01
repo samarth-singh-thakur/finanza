@@ -4,6 +4,7 @@ class Ledger(models.Model):
     lender = models.CharField(max_length = 500)
     borrower = models.CharField(max_length = 500)
     amount = models.FloatField()
+    description = models.CharField(max_length = 300)
     
     # def transaction(self):
     #     self.save()

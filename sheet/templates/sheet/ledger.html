@@ -68,6 +68,7 @@
       <th scope="col">Lender</th>
       <th scope="col">Borrower</th>
       <th scope="col">Amount</th>
+      <th scope="col">Description</th>
     </tr>
   </thead>
   <tbody>
@@ -77,6 +78,7 @@
       <td>{{l.lender|capfirst}}</td>
       <td>{{l.borrower|capfirst}}</td>
       <td>{{l.amount}}</td>
+      <td>{{l.description}}</td>
       <td id="dustbin"><i class="fa fa-trash-o" style="font-size: 24px; color: rgba(134, 134, 134,0.4);"></i></td>
     </tr>
     {% endfor %}
