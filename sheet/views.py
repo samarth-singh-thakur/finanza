@@ -21,7 +21,9 @@ def ledger_view(request):
         form = LedgerForm()
     
     ledgers = Ledger.objects.all()
+    
     users = User.objects.all()
+    dateTime = Ledger.date_time
 
     auth_user = request.user.username
 
@@ -32,8 +34,13 @@ def ledger_view(request):
             profit+=transaction.amount
 
         elif(transaction.borrower == auth_user):
-            profit-=transaction.amount        
+            profit-=transaction.amount    
+
+    sorted_ledger = sorted(ledgers, key= lambda Ledger:Ledger.date_time, reverse=True)
 
 
-
-    return render(request,'sheet/ledger.html',{'form': form, 'ledgers': ledgers, 'users':users, 'money':profit})
+    return render(request,'sheet/ledger.html',{'form': form, 
+                                               'ledgers': sorted_ledger, 
+                                               'users':users, 
+                                               'money':profit, 
+                                               'date_time': dateTime })
