@@ -14,13 +14,13 @@ def ledger_view(request):
             ledger = form.save(commit=False)
             ledger.save()
 
-            #form = LedgerForm()
+            form = LedgerForm()
             return redirect('sheet:ledger_sheet')
 
     else:
         form = LedgerForm()
     
-    ledgers = Ledger.objects.all()
+    ledgers = Ledger.objects.order_by('-timestamp')
     users = User.objects.all()
 
     auth_user = request.user.username

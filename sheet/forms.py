@@ -5,4 +5,4 @@ class LedgerForm(forms.ModelForm):
 
     class Meta:
         model = Ledger
-        fields = ('lender', 'borrower', 'amount','description')
+        fields = ('lender', 'borrower', 'amount','description',)

@@ -49,14 +49,20 @@
     <label class="input-group-text" for="inputGroupSelect02">Options</label>
   </div>
 </div>
- <div class="input-group mb-3 col col-lg-3">
+  <div class="input-group mb-3 col col-lg-3">
     <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Enter the amount" name="amount">
   </div>
   </div>
+  <center>
+  <div class="input-group mb-3 col col-lg-3">
+    <input type="text" class="form-control" id="formGroupExampleInput1" placeholder="Add description" name="description">
+
+  </div>
+  </center>
   <br>
   <div class="d-flex justify-content-center">
  <button type="submit" class="btn btn-primary mb-2">Confirm Submit</button>
- </div>
+</div>
 </form>
 <br> <br>
 <center>{{ money }}</center>
@@ -79,6 +85,7 @@
       <td>{{l.borrower|capfirst}}</td>
       <td>{{l.amount}}</td>
       <td>{{l.description}}</td>
+      <td>{{l.timestamp}}</td>
       <td id="dustbin"><i class="fa fa-trash-o" style="font-size: 24px; color: rgba(134, 134, 134,0.4);"></i></td>
     </tr>
     {% endfor %}
