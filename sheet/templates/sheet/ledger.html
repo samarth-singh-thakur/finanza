@@ -86,7 +86,7 @@
       <td>{{l.amount}}</td>
       <td>{{l.description}}</td>
       <td>{{l.timestamp}}</td>
-      <td id="dustbin"><i class="fa fa-trash-o" style="font-size: 24px; color: rgba(134, 134, 134,0.4);"></i></td>
+      <td id="dustbin"><a href="{% url 'ledge_del' pk=l.pk %}"><i class="fa fa-trash-o" style="font-size: 24px; color: rgba(134, 134, 134,0.4);"></i></a></td>
     </tr>
     {% endfor %}
 

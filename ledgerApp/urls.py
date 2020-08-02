@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from sheet import views as sheet_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('sheet.urls')),
+    # path('', include('sheet.urls')),
     path('', include('users.urls')),
-    path('accounts/', include('django.contrib.auth.urls'))
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('sheet/', sheet_views.ledger_view,name='ledger_sheet'),
+    path('sheet/<int:pk>/delete', sheet_views.ledge_del, name = 'ledge_del'),
     # path('login/', includes(''))
 ]

@@ -15,11 +15,13 @@ def ledger_view(request):
             ledger.save()
 
             form = LedgerForm()
-            return redirect('sheet:ledger_sheet')
+            return redirect('ledger_sheet')
 
     else:
         form = LedgerForm()
-    
+    var = Ledger.objects.all()
+    for i in var:
+        print(i.pk)
     ledgers = Ledger.objects.order_by('-timestamp')
     users = User.objects.all()
 
@@ -37,3 +39,8 @@ def ledger_view(request):
 
 
     return render(request,'sheet/ledger.html',{'form': form, 'ledgers': ledgers, 'users':users, 'money':profit})
+
+def  ledge_del(request,pk):
+    items = Ledger.objects.get(pk=pk)
+    items.delete()
+    return redirect('ledger_sheet')
